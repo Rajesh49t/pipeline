@@ -6,7 +6,7 @@ git credentialsId: 'c92b0958-af6f-4834-a103-f97a5c73d877', url: 'https://github.
 
 
 stage "UnitTesting"
-withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
+withMaven(jdk: 'JAVA_HOME_SYSTEM', maven: 'Maven_master') {
 sh '''cd Ewallet_devops
 unset JAVA_TOOL_OPTIONS
 mvn clean test -Ptest org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true cobertura:cobertura -Dcobertura.report.format=xml\'
@@ -22,7 +22,7 @@ parallel(SCA: {
 sh "/sonar_runner/sonar-runner-2.4/bin/sonar-runner -Dproject.settings=/Users/dess-pune-devops/jenkins/workspace/Ewallet_pipeline/Ewallet_devops/src/sonar-project.properties"
 }, Build: {
 //stage 'Build'
-withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
+withMaven(jdk: 'JAVA_HOME_SYSTEM', maven: 'Maven_master') {
 sh '''cd Ewallet_devops
 unset JAVA_TOOL_OPTIONS
 mvn install -Ptest -Dmaven.test.skip=true'''
@@ -34,7 +34,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'Ewallet_devops', classifier: '',
 
 
 stage "Deploy to tomcat"
-sh 'curl --upload-file Ewallet_devops/target/Ewallet_devops-0.0.1.war "http://myuser:password@10.30.72.97:8081/manager/text/deploy?path=/Ewallet_devops-0.0.1&update=true"'
+sh 'curl --upload-file Ewallet_devops/target/Ewallet_devops-0.0.1.war "http://admin:admin@10.136.53.10:8080/manager/text/deploy?path=/Ewallet_devops-0.0.1&update=true"'
 /*    
 }
 /*
