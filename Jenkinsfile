@@ -19,7 +19,7 @@ stage 'parallel SCA and Build'
 
 parallel(SCA: {
 //stage 'SCA'
-sh "/sonar_runner/sonar-runner-2.4/bin/sonar-runner -Dproject.settings=/Users/dess-pune-devops/jenkins/workspace/Ewallet_pipeline/Ewallet_devops/src/sonar-project.properties"
+sh "/Users/Shared/Jenkins/Downloads/sonar-runner-2.4/bin/sonar-runner -Dproject.settings=Ewallet_devops/src/sonar-project.properties"
 }, Build: {
 //stage 'Build'
 withMaven(jdk: 'JAVA_HOME_SYSTEM', maven: 'Maven_master') {
