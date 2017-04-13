@@ -30,7 +30,7 @@ mvn install -Ptest -Dmaven.test.skip=true'''
 
 
 stage "Nexus"
-nexusArtifactUploader artifacts: [[artifactId: 'Ewallet_devops', classifier: '', file: 'Ewallet_devops/target/Ewallet_devops-0.0.1.war', type: 'war']], credentialsId: '6524c0ba-df82-40ba-b58e-23e079289e3c', groupId: 'Ewallet_devops', nexusUrl: '10.136.53.84:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Maven_Sample', version: '0.0.1'
+nexusArtifactUploader artifacts: [[artifactId: 'Ewallet_devops', classifier: '', file: 'Ewallet_devops/target/Ewallet_devops-0.0.1.war', type: 'war']], credentialsId: '6524c0ba-df82-40ba-b58e-23e079289e3c', groupId: 'Ewallet_devops', nexusUrl: '10.136.53.84:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Ewallet_Development', version: '0.0.1'
 
 
 stage "Deploy to tomcat"
