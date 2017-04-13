@@ -1,5 +1,5 @@
 //---maven project
-node('iOS_Slave') {
+node('master') {
     // some block
 stage "SCM Checkout"
 git credentialsId: 'c92b0958-af6f-4834-a103-f97a5c73d877', url: 'https://github.com/ankitapatil2/Ewallet.git'
